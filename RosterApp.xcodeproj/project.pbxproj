@@ -21,6 +21,7 @@
 		D653C51318F335F30002F29A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653C4F518F335F30002F29A /* UIKit.framework */; };
 		D653C51B18F335F30002F29A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D653C51918F335F30002F29A /* InfoPlist.strings */; };
 		D653C51D18F335F30002F29A /* RosterAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C51C18F335F30002F29A /* RosterAppTests.m */; };
+		D653C52818F339A30002F29A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C52718F339A30002F29A /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		D653C51818F335F30002F29A /* RosterAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RosterAppTests-Info.plist"; sourceTree = "<group>"; };
 		D653C51A18F335F30002F29A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D653C51C18F335F30002F29A /* RosterAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RosterAppTests.m; sourceTree = "<group>"; };
+		D653C52618F339A30002F29A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		D653C52718F339A30002F29A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				D653C50318F335F30002F29A /* Main.storyboard */,
 				D653C50618F335F30002F29A /* ViewController.h */,
 				D653C50718F335F30002F29A /* ViewController.m */,
+				D653C52618F339A30002F29A /* Person.h */,
+				D653C52718F339A30002F29A /* Person.m */,
 				D653C50918F335F30002F29A /* Images.xcassets */,
 				D653C4F818F335F30002F29A /* Supporting Files */,
 			);
@@ -251,6 +256,7 @@
 			files = (
 				D653C50818F335F30002F29A /* ViewController.m in Sources */,
 				D653C50218F335F30002F29A /* AppDelegate.m in Sources */,
+				D653C52818F339A30002F29A /* Person.m in Sources */,
 				D653C4FE18F335F30002F29A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
