@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
+#import "PersonTableViewCell.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,10 +36,12 @@
     Person *teacherOne = [Person new];
     teacherOne.firstName = @"John";
     teacherOne.lastName = @"Clem";
+    teacherOne.type = teacher;
     
     Person *teacherTwo = [Person new];
     teacherTwo.firstName = @"Brad";
     teacherTwo.lastName = @"Johnson";
+    teacherOne.type = teacher;
     
     [self.teacherRoster addObject:teacherOne];
     [self.teacherRoster addObject:teacherTwo];
@@ -46,30 +49,46 @@
     Person *studentOne = [Person new];
     studentOne.firstName = @"Dan";
     studentOne.lastName = @"Fairbanks";
+    studentOne.type = student;
     
     Person *studentTwo = [Person new];
     studentTwo.firstName = @"Reed";
     studentTwo.lastName = @"Sweeney";
+    studentOne.type = student;
     
     Person *studentThree = [Person new];
     studentThree.firstName = @"Micheal";
     studentThree.lastName = @"Bably";
+    studentOne.type = student;
     
     Person *studentFour = [Person new];
     studentFour.firstName = @"Cole";
     studentFour.lastName = @"Bratcher";
+    studentOne.type = student;
     
     Person *studentFive = [Person new];
     studentFive.firstName = @"Christopher";
     studentFive.lastName = @"Cohan";
+    studentOne.type = student;
+    
+    Person *studentSix = [Person new];
+    studentSix.firstName = @"Lauren";
+    studentSix.lastName = @"Lee";
+    studentOne.type = student;
+    
+    Person *studentSeven = [Person new];
+    studentSeven.firstName = @"Sean";
+    studentSeven.lastName = @"Mcneil";
+    studentOne.type = student;
     
     [self.studentRoster addObject:studentOne];
     [self.studentRoster addObject:studentTwo];
     [self.studentRoster addObject:studentThree];
     [self.studentRoster addObject:studentFour];
     [self.studentRoster addObject:studentFive];
-    
-    
+    [self.studentRoster addObject:studentSix];
+    [self.studentRoster addObject:studentSeven];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,17 +118,18 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (PersonTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+   PersonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     Person *myPerson;
     
     if (indexPath.section == 0) {
-        myPerson = [self.teacherRoster objectAtIndex:indexPath.row];
+        myPerson = self.teacherRoster[indexPath.row];
     } else {
-        myPerson = [self.studentRoster objectAtIndex:indexPath.row];
+        myPerson = self.studentRoster[indexPath.row];
     }
-    cell.textLabel.text = myPerson.firstName;
+    cell.cellLabel.text = myPerson.firstName;
     return cell;
 }
 

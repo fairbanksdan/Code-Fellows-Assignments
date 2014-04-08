@@ -14,4 +14,13 @@
 
 @property (nonatomic, strong) NSString *lastName;
 
+@property (nonatomic, strong) UIImage *headShot;
+
+typedef NS_ENUM(NSInteger, personType) {
+    student,
+    teacher
+};
+
+@property (nonatomic) personType type;
+
 @end

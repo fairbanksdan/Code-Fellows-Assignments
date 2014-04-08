@@ -22,6 +22,9 @@
 		D653C51B18F335F30002F29A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D653C51918F335F30002F29A /* InfoPlist.strings */; };
 		D653C51D18F335F30002F29A /* RosterAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C51C18F335F30002F29A /* RosterAppTests.m */; };
 		D653C52818F339A30002F29A /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C52718F339A30002F29A /* Person.m */; };
+		D653C56C18F48CD40002F29A /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C56B18F48CD40002F29A /* PersonViewController.m */; };
+		D653C56E18F490A20002F29A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653C56D18F490A20002F29A /* AssetsLibrary.framework */; };
+		D653C57718F49B770002F29A /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C57618F49B770002F29A /* PersonTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,11 @@
 		D653C51C18F335F30002F29A /* RosterAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RosterAppTests.m; sourceTree = "<group>"; };
 		D653C52618F339A30002F29A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		D653C52718F339A30002F29A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		D653C56A18F48CD40002F29A /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
+		D653C56B18F48CD40002F29A /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		D653C56D18F490A20002F29A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D653C57518F49B770002F29A /* PersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
+		D653C57618F49B770002F29A /* PersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D653C56E18F490A20002F29A /* AssetsLibrary.framework in Frameworks */,
 				D653C4F418F335F30002F29A /* CoreGraphics.framework in Frameworks */,
 				D653C4F618F335F30002F29A /* UIKit.framework in Frameworks */,
 				D653C4F218F335F30002F29A /* Foundation.framework in Frameworks */,
@@ -104,6 +113,7 @@
 		D653C4F018F335F30002F29A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D653C56D18F490A20002F29A /* AssetsLibrary.framework */,
 				D653C4F118F335F30002F29A /* Foundation.framework */,
 				D653C4F318F335F30002F29A /* CoreGraphics.framework */,
 				D653C4F518F335F30002F29A /* UIKit.framework */,
@@ -118,6 +128,10 @@
 				D653C50018F335F30002F29A /* AppDelegate.h */,
 				D653C50118F335F30002F29A /* AppDelegate.m */,
 				D653C50318F335F30002F29A /* Main.storyboard */,
+				D653C57518F49B770002F29A /* PersonTableViewCell.h */,
+				D653C57618F49B770002F29A /* PersonTableViewCell.m */,
+				D653C56A18F48CD40002F29A /* PersonViewController.h */,
+				D653C56B18F48CD40002F29A /* PersonViewController.m */,
 				D653C50618F335F30002F29A /* ViewController.h */,
 				D653C50718F335F30002F29A /* ViewController.m */,
 				D653C52618F339A30002F29A /* Person.h */,
@@ -209,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D653C4E918F335F30002F29A /* Build configuration list for PBXProject "RosterApp" */;
+			buildConfigurationList = D653C4E918F335F30002F29A /* Build configuration list for PBXProject "RosterAppDay2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -254,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D653C56C18F48CD40002F29A /* PersonViewController.m in Sources */,
 				D653C50818F335F30002F29A /* ViewController.m in Sources */,
+				D653C57718F49B770002F29A /* PersonTableViewCell.m in Sources */,
 				D653C50218F335F30002F29A /* AppDelegate.m in Sources */,
 				D653C52818F339A30002F29A /* Person.m in Sources */,
 				D653C4FE18F335F30002F29A /* main.m in Sources */,
@@ -386,6 +402,7 @@
 				GCC_PREFIX_HEADER = "RosterApp/RosterApp-Prefix.pch";
 				INFOPLIST_FILE = "RosterApp/RosterApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -399,6 +416,7 @@
 				GCC_PREFIX_HEADER = "RosterApp/RosterApp-Prefix.pch";
 				INFOPLIST_FILE = "RosterApp/RosterApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -446,7 +464,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D653C4E918F335F30002F29A /* Build configuration list for PBXProject "RosterApp" */ = {
+		D653C4E918F335F30002F29A /* Build configuration list for PBXProject "RosterAppDay2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D653C51E18F335F30002F29A /* Debug */,
@@ -462,6 +480,7 @@
 				D653C52218F335F30002F29A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D653C52318F335F30002F29A /* Build configuration list for PBXNativeTarget "RosterAppTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +489,7 @@
 				D653C52518F335F30002F29A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

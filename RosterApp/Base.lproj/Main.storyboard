@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="8BF-1k-edf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="51" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="8BF-1k-edf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -24,24 +24,26 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="FlG-oa-3RM" rowHeight="48" style="IBUITableViewCellStyleDefault" id="CKK-56-I8g">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="48"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="51" id="CKK-56-I8g" customClass="PersonTableViewCell">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CKK-56-I8g" id="98p-qb-dhb">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FlG-oa-3RM">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="47"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKa-eF-u6v">
+                                                    <rect key="frame" x="20" y="5" width="267" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.36222460278799373" blue="0.34051735779332237" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="cellLabel" destination="GKa-eF-u6v" id="1Hy-ao-UTE"/>
+                                            <outlet property="thumbnailHeadShot" destination="98p-qb-dhb" id="Jtt-eZ-4bW"/>
                                             <segue destination="aUK-Zf-Vso" kind="push" identifier="ViewPerson" id="Jir-60-r7Q"/>
                                         </connections>
                                     </tableViewCell>
@@ -49,6 +51,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8BF-1k-edf" secondAttribute="bottom" id="7O9-oh-Top"/>
+                            <constraint firstItem="8BF-1k-edf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="PIs-PR-9X5"/>
+                            <constraint firstAttribute="trailing" secondItem="8BF-1k-edf" secondAttribute="trailing" id="foq-Db-LpC"/>
+                            <constraint firstItem="8BF-1k-edf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="loZ-nG-xMr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4cZ-gI-aXj"/>
                     <connections>
@@ -59,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="694" y="41"/>
         </scene>
-        <!--View Controller-->
+        <!--Person View Controller-->
         <scene sceneID="FxF-1l-cci">
             <objects>
-                <viewController id="aUK-Zf-Vso" sceneMemberID="viewController">
+                <viewController id="aUK-Zf-Vso" customClass="PersonViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FN4-qq-3r2"/>
                         <viewControllerLayoutGuide type="bottom" id="NI7-cy-UfH"/>
@@ -70,9 +78,32 @@
                     <view key="view" contentMode="scaleToFill" id="zWN-S8-HVk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxi-x1-IGd">
+                                <rect key="frame" x="60" y="76" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZr-Rl-IeC">
+                                <rect key="frame" x="120" y="284" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Set Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findPicture:" destination="aUK-Zf-Vso" eventType="touchUpInside" id="a4X-ds-WvL"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1wB-wa-QNE">
+                                <rect key="frame" x="60" y="76" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="36A-zc-fn8"/>
+                    <connections>
+                        <outlet property="HeadShot" destination="1wB-wa-QNE" id="Lj9-E7-BIa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXW-cE-Lny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
