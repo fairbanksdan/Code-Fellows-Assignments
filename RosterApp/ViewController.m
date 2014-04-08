@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Person.h"
 #import "PersonTableViewCell.h"
+#import "PersonViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -25,9 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.tableView.dataSource = self;
-    
-    self.tableView.delegate = self;
     
     self.studentRoster = [[NSMutableArray alloc] init];
     
@@ -91,6 +89,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -130,11 +133,14 @@
         myPerson = self.studentRoster[indexPath.row];
     }
     cell.cellLabel.text = myPerson.firstName;
+    cell.headShotImageView.image = myPerson.headShot;
+    cell.headShotImageView.layer.cornerRadius = cell.headShotImageView.frame.size.width/2.0;
+    cell.headShotImageView.layer.masksToBounds = YES;
     return cell;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *personVC = segue.destinationViewController;
+    PersonViewController *personVC = segue.destinationViewController;
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
     
     Person *myPerson;
@@ -145,7 +151,7 @@
         myPerson = [self.studentRoster objectAtIndex:myIndexPath.row];
     }
     
-    personVC.title = [NSString stringWithFormat:@"%@ %@", myPerson.firstName, myPerson.lastName];
+    personVC.selectedPerson = myPerson;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

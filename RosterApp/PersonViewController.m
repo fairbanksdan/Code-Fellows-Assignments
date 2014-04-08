@@ -8,6 +8,7 @@
 
 #import "PersonViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "Person.h"
 
 @interface PersonViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -86,14 +87,17 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     _HeadShot.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    UIImage *originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    _HeadShot.layer.cornerRadius = _HeadShot.frame.size.width/2.0;
+    _HeadShot.layer.masksToBounds = YES;
+    self.selectedPerson.headShot = editedImage;
     
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Completed");
         
         ALAssetsLibrary *assetsLibrary = [ALAssetsLibrary new];
         if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusAuthorized || [ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusNotDetermined) {
-            [assetsLibrary writeImageToSavedPhotosAlbum:originalImage.CGImage
+            [assetsLibrary writeImageToSavedPhotosAlbum:editedImage.CGImage
                                             orientation:ALAssetOrientationUp
                                         completionBlock:^(NSURL *assetURL, NSError *error) {
                                             if (error) {

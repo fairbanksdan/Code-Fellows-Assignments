@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PersonTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIView *thumbnailHeadShot;
+
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headShotImageView;
 
 @end
