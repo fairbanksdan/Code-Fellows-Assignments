@@ -102,7 +102,7 @@
                                         }];
         } else if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied || [ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusRestricted) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Cannot Save Photo"
-                                                                message:@"Authorization status not granted"
+                                                                message:@"Denied access without authorization"
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
