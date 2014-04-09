@@ -9,11 +9,13 @@
 #import "PersonViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "Person.h"
+#import "DataController.h"
 
 @interface PersonViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (strong,nonatomic) UIActionSheet *myActionSheet;
 @property (weak, nonatomic) IBOutlet UIImageView *HeadShot;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end
 
@@ -28,10 +30,25 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.nameTextField.text = [NSString stringWithFormat:@"%@ %@", self.selectedPerson.firstName, self.selectedPerson.lastName];
+    if (_selectedPerson.headShot) {
+        self.HeadShot.image = self.selectedPerson.headShot;
+        _HeadShot.layer.cornerRadius = _HeadShot.frame.size.width/2.0;
+        _HeadShot.layer.masksToBounds = YES;
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.selectedPerson.firstName = [[_nameTextField.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
+    self.selectedPerson.lastName = [[_nameTextField.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] lastObject];
+    
+    [[DataController sharedData] save];
 }
 
 - (void)didReceiveMemoryWarning

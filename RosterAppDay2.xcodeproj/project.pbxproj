@@ -25,6 +25,8 @@
 		D653C56C18F48CD40002F29A /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C56B18F48CD40002F29A /* PersonViewController.m */; };
 		D653C56E18F490A20002F29A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653C56D18F490A20002F29A /* AssetsLibrary.framework */; };
 		D653C57718F49B770002F29A /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C57618F49B770002F29A /* PersonTableViewCell.m */; };
+		D653C57918F5B0A00002F29A /* people.plist in Resources */ = {isa = PBXBuildFile; fileRef = D653C57818F5B0A00002F29A /* people.plist */; };
+		D653C57F18F5E1D20002F29A /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D653C57E18F5E1D20002F29A /* DataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,13 +59,16 @@
 		D653C51818F335F30002F29A /* RosterAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RosterAppTests-Info.plist"; sourceTree = "<group>"; };
 		D653C51A18F335F30002F29A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D653C51C18F335F30002F29A /* RosterAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RosterAppTests.m; sourceTree = "<group>"; };
-		D653C52618F339A30002F29A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		D653C52718F339A30002F29A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		D653C52618F339A30002F29A /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.h; path = RosterApp/Person.h; sourceTree = "<group>"; };
+		D653C52718F339A30002F29A /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.m; path = RosterApp/Person.m; sourceTree = "<group>"; };
 		D653C56A18F48CD40002F29A /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		D653C56B18F48CD40002F29A /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		D653C56D18F490A20002F29A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		D653C57518F49B770002F29A /* PersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
 		D653C57618F49B770002F29A /* PersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
+		D653C57818F5B0A00002F29A /* people.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = people.plist; sourceTree = "<group>"; };
+		D653C57D18F5E1D20002F29A /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataController.h; path = ../DataController.h; sourceTree = "<group>"; };
+		D653C57E18F5E1D20002F29A /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataController.m; path = ../DataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,17 +130,13 @@
 		D653C4F718F335F30002F29A /* RosterApp */ = {
 			isa = PBXGroup;
 			children = (
+				D653C57A18F5E1080002F29A /* Model */,
+				D653C57B18F5E1260002F29A /* Controller */,
+				D653C57C18F5E1430002F29A /* Views */,
 				D653C50018F335F30002F29A /* AppDelegate.h */,
 				D653C50118F335F30002F29A /* AppDelegate.m */,
 				D653C50318F335F30002F29A /* Main.storyboard */,
-				D653C57518F49B770002F29A /* PersonTableViewCell.h */,
-				D653C57618F49B770002F29A /* PersonTableViewCell.m */,
-				D653C56A18F48CD40002F29A /* PersonViewController.h */,
-				D653C56B18F48CD40002F29A /* PersonViewController.m */,
-				D653C50618F335F30002F29A /* ViewController.h */,
-				D653C50718F335F30002F29A /* ViewController.m */,
-				D653C52618F339A30002F29A /* Person.h */,
-				D653C52718F339A30002F29A /* Person.m */,
+				D653C57818F5B0A00002F29A /* people.plist */,
 				D653C50918F335F30002F29A /* Images.xcassets */,
 				D653C4F818F335F30002F29A /* Supporting Files */,
 			);
@@ -169,6 +170,38 @@
 				D653C51918F335F30002F29A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D653C57A18F5E1080002F29A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D653C52618F339A30002F29A /* Person.h */,
+				D653C52718F339A30002F29A /* Person.m */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D653C57B18F5E1260002F29A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D653C57D18F5E1D20002F29A /* DataController.h */,
+				D653C57E18F5E1D20002F29A /* DataController.m */,
+				D653C56A18F48CD40002F29A /* PersonViewController.h */,
+				D653C56B18F48CD40002F29A /* PersonViewController.m */,
+				D653C50618F335F30002F29A /* ViewController.h */,
+				D653C50718F335F30002F29A /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D653C57C18F5E1430002F29A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D653C57518F49B770002F29A /* PersonTableViewCell.h */,
+				D653C57618F49B770002F29A /* PersonTableViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +283,7 @@
 				D653C50A18F335F30002F29A /* Images.xcassets in Resources */,
 				D653C4FC18F335F30002F29A /* InfoPlist.strings in Resources */,
 				D653C50518F335F30002F29A /* Main.storyboard in Resources */,
+				D653C57918F5B0A00002F29A /* people.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +306,7 @@
 				D653C50818F335F30002F29A /* ViewController.m in Sources */,
 				D653C57718F49B770002F29A /* PersonTableViewCell.m in Sources */,
 				D653C50218F335F30002F29A /* AppDelegate.m in Sources */,
+				D653C57F18F5E1D20002F29A /* DataController.m in Sources */,
 				D653C52818F339A30002F29A /* Person.m in Sources */,
 				D653C4FE18F335F30002F29A /* main.m in Sources */,
 			);
