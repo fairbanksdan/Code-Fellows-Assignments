@@ -11,11 +11,15 @@
 #import "Person.h"
 #import "DataController.h"
 
-@interface PersonViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PersonViewController () <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIActivityItemSource>
 
 @property (strong,nonatomic) UIActionSheet *myActionSheet;
 @property (weak, nonatomic) IBOutlet UIImageView *HeadShot;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *githubTextField;
+@property (weak, nonatomic) IBOutlet UITextField *twitterTextField;
 
 @end
 
@@ -34,19 +38,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.nameTextField.delegate = self;
+    self.githubTextField.delegate = self;
+    self.twitterTextField.delegate = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.nameTextField.text = [NSString stringWithFormat:@"%@ %@", self.selectedPerson.firstName, self.selectedPerson.lastName];
+    self.githubTextField.text = self.selectedPerson.github;
+    self.twitterTextField.text = self.selectedPerson.twitter;
+    
     if (_selectedPerson.headShot) {
         self.HeadShot.image = self.selectedPerson.headShot;
+    }
         _HeadShot.layer.cornerRadius = _HeadShot.frame.size.width/2.0;
         _HeadShot.layer.masksToBounds = YES;
+        
+       
+        [_HeadShot setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(findPicture:)];
+        [_HeadShot addGestureRecognizer:tapImage];
+        self.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+        
     }
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.selectedPerson.firstName = [[_nameTextField.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] firstObject];
     self.selectedPerson.lastName = [[_nameTextField.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] lastObject];
+    self.selectedPerson.github = _githubTextField.text;
+    self.selectedPerson.twitter = _twitterTextField.text;
     
     [[DataController sharedData] save];
 }
@@ -103,7 +123,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    _HeadShot.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    _HeadShot.image = [info objectForKey:UIImagePickerControllerEditedImage];
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     _HeadShot.layer.cornerRadius = _HeadShot.frame.size.width/2.0;
     _HeadShot.layer.masksToBounds = YES;
@@ -135,15 +155,35 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    for (UIControl *control in self.scrollView.subviews) {
+        if ([control isKindOfClass:[UITextField class]]) {
+            [control endEditing:YES];
+        }
+    }
 }
-*/
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - 200) animated:YES];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+-(IBAction)sharedPhoto:(id)sender
+{
+    UIActivityViewController *sharePhotoVC = [[UIActivityViewController alloc] initWithActivityItems:@[self.selectedPerson.headShot] applicationActivities:nil];
+    
+    [self presentViewController:sharePhotoVC animated:YES completion:nil];
+    
+   
+}
 @end

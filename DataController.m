@@ -61,6 +61,10 @@
     return cell;
 }
 
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 -(instancetype)initWithTeachersAndStudents
 {
     self = [super init];
@@ -138,5 +142,6 @@
     [NSKeyedArchiver archiveRootObject:self.studentRoster toFile:studentPlistPath];
      
      }
+
 
 @end

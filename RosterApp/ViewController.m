@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) DataController *myDataController;
+- (IBAction)editButtonSelected:(UIBarButtonItem *)sender;
 
 @end
 
@@ -73,4 +74,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (IBAction)editButtonSelected:(UIBarButtonItem *)sender {
+    if (self.tableView.isEditing) {
+        [self.tableView setEditing:NO animated:YES];
+        [sender setTitle:@"Edit"];
+    }
+        else
+    {
+        [self.tableView  setEditing:YES animated:YES];
+        [sender setTitle:@"Done"];
+    }
+}
 @end
